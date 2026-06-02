@@ -184,11 +184,13 @@ class InstallCommand(RequirementCommand):
             dest="target_dir",
             metavar="dir",
             default=None,
-            help=(
+                        help=(
                 "Install packages into <dir>. "
-                "By default this will not replace existing files/folders in "
-                "<dir>. Use --upgrade to replace existing packages in <dir> "
-                "with new versions."
+                "This option is intended for specialized scenarios where "
+                "packages are installed into a new, empty directory (e.g. "
+                "embedding Python or vendoring dependencies). "
+                "Using it on a non-empty directory can lead to unexpected "
+                "behavior, such as duplicate package metadata."
             ),
         )
         cmdoptions.add_target_python_options(self.cmd_opts)

@@ -38,6 +38,34 @@ pip install has several stages:
 Note that ``pip install`` prefers to leave the installed version as-is
 unless ``--upgrade`` is specified.
 
+.. _target:
+
+Installing to an alternative directory (``--target``)
+------------------------------------------------------
+
+The ``--target`` option installs packages into a specified directory
+instead of the default site-packages location. It is intended for
+specialized scenarios, such as embedding Python in an application
+or vendoring dependencies.
+
+.. warning::
+
+   The ``--target`` option should only be used with empty directories.
+   Installing into a non-empty directory can result in unexpected
+   behavior, including duplicate package metadata. For general
+   package management, use virtual environments or the ``--user``
+   option instead.
+
+Usage example::
+
+   python -m pip install --target /path/to/my/libs requests
+
+To use the installed packages, add the target directory to ``sys.path``
+in your application::
+
+   import sys
+   sys.path.insert(0, "/path/to/my/libs")
+
 Argument Handling
 -----------------
 
